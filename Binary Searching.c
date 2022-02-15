@@ -1,34 +1,29 @@
 #include <stdio.h>
-int iterativeBinarySearch(int array[], int start_index, int end_index, int element){
-    while (start_index <= end_index){
-        int middle = start_index + (end_index- start_index )/2;
-        if (array[middle] == element)
-            return middle;
-        if (array[middle] < element)
-            start_index = middle + 1;
-        else
-         end_index = middle - 1;
+ 
+int main() {
+  int data[100], cari, i, n;
+ 
+  printf("Masukkan banyaknya jumlah data : ");
+  scanf("%d", &n);
+ 
+  printf("Input setiap data integer sebanyak %d : ", n);
+ 
+  for (i = 0; i < n; i++){
+    scanf("%d", &data[i]);
+  }
+ 
+  printf("Input data yang ingin dicari: ");
+  scanf("%d", &cari);
+ 
+  for (i = 0; i < n; i++) {
+    if (data[i] == cari) {
+      printf("%d berada di indeks ke %d.\n", cari, i+1);
+      break;
     }
-    return -1;
-}
-
-int main(void)
-{
-    printf("--------------------------------------------------------\n\n");
-    printf("\t\tBINARY SEARCHING\n\n");
-    printf("--------------------------------------------------------\n\n");
-
-    int array[]={1, 4, 7, 9, 16, 56, 70, 81, 93, 100};
-    int n=10;
-    int element=93;
-    int found_index = iterativeBinarySearch(array, 0, n-1, element);
-    if(found_index == -1 )
-        {
-        printf("Angka tersebut TIDAK DITEMUKAN \n");
-        }
-    else
-    {
-        printf("Angka ditemukan pada lokasi/index : %d\n",found_index);
-    }
-    return 0;
+  }
+  if (i == n){
+    printf("%d tidak ada.\n", cari);
+  }
+  
+  return 0;
 }
